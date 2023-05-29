@@ -21,17 +21,21 @@ function App() {
   useEffect(() => {
     if (accessToken) {
       switch (loginType) {
-        case "GIT":
+        case "GIT": // 로그인을 깃허브로 하게되었을 경우
           axios({
-            url: "https://api.github.com/user",
+            url: "https://api.github.com/user", // 깃허브 URL로 가서 지금 user에 대한 정보를 받아서 토큰에 넣는다.
             method: "get",
             headers: {
-              'Authorization': `token ${accessToken}`,
-            }
-          }).then((result) => {
-            console.log("user info from github", result);
-          }).catch(error=>{console.log(error)});
-    
+              Authorization: `token ${accessToken}`,
+            },
+          })
+            .then((result) => {
+              console.log("user info from github", result);
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+
           break;
         case "GOOGLE":
           break;

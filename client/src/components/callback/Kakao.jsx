@@ -1,4 +1,3 @@
-import React from 'react'
 import axios from "axios";
 import React, { useContext, useEffect } from "react";
 import { createContext } from "react";
@@ -9,10 +8,10 @@ export default function Kakao() {
   const { accessToken, setAccessToken, loginType, setLoginType } =
     useContext(UserContext);
 
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    useEffect(() => {
-      try {
+  useEffect(() => {
+    try {
       const url = new URL(window.location.href);
       const code = url.searchParams.get("code");
       if (code) {
@@ -30,10 +29,7 @@ export default function Kakao() {
         });
       }
     } catch (error) {}
-  
-    }, []);  
+  }, []);
 
-  return (
-    <div>Kakao</div>
-  )
+  return <div>Kakao</div>;
 }
